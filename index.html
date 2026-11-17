@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العرض الفني لخدمة فريق مبيعات خارجي متخصص | إعمار لاند × KAAF Group</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Cairo & IBM Plex Sans Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kaaf: {
+                            blue: '#0A4C86',
+                            blueLight: '#1C75C8',
+                            blueDeep: '#05233E',
+                            blueDarkest: '#031424',
+                            green: '#00875A',
+                            greenLight: '#00B377',
+                            greenDeep: '#023824',
+                            gold: '#D4AF37',
+                            goldLight: '#F5DE88',
+                            purple: '#7C3AED',
+                            purpleLight: '#A78BFA',
+                            rose: '#E11D48',
+                            roseLight: '#FB7185',
+                            cyan: '#06B6D4',
+                            cyanLight: '#67E8F9',
+                            amber: '#F59E0B',
+                            dark: '#030812',
+                            darkSlate: '#081220',
+                            cardBg: '#0B1A2E',
+                            border: '#1B314B'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        ibm: ['IBM Plex Sans Arabic', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'glow-blue': '0 0 35px -5px rgba(10, 76, 134, 0.6)',
+                        'glow-gold': '0 0 35px -5px rgba(212, 175, 55, 0.55)',
+                        'glow-cyan': '0 0 35px -5px rgba(6, 182, 212, 0.6)',
+                        'glow-green': '0 0 35px -5px rgba(0, 135, 90, 0.6)',
+                        'web-card': '0 20px 45px -15px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', 'IBM Plex Sans Arabic', sans-serif;
+            background-color: #030812;
+            color: #E2E8F0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #interactive-bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.65;
+        }
+
+        .kaaf-ribbon {
+            background: linear-gradient(90deg, 
+                #0A4C86 0%, 
+                #06B6D4 20%, 
+                #00875A 40%, 
+                #D4AF37 60%, 
+                #7C3AED 80%, 
+                #E11D48 100%
+            );
+            height: 4px;
+        }
+
+        .web-card-blue {
+            background: linear-gradient(135deg, rgba(10, 30, 56, 0.85) 0%, rgba(5, 16, 32, 0.95) 100%);
+            border: 1px solid rgba(28, 117, 200, 0.35);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .web-card-blue:hover {
+            border-color: rgba(28, 117, 200, 0.75);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 35px -10px rgba(10, 76, 134, 0.5);
+        }
+
+        .web-card-gold {
+            background: linear-gradient(135deg, rgba(45, 36, 15, 0.85) 0%, rgba(18, 14, 5, 0.95) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .web-card-gold:hover {
+            border-color: rgba(212, 175, 55, 0.85);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 35px -10px rgba(212, 175, 55, 0.5);
+        }
+
+        .web-card-green {
+            background: linear-gradient(135deg, rgba(8, 38, 28, 0.85) 0%, rgba(4, 20, 15, 0.95) 100%);
+            border: 1px solid rgba(0, 179, 119, 0.35);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .web-card-green:hover {
+            border-color: rgba(0, 179, 119, 0.75);
+            box-shadow: 0 16px 35px -10px rgba(0, 135, 90, 0.5);
+        }
+
+        .web-card-cyan {
+            background: linear-gradient(135deg, rgba(8, 36, 48, 0.85) 0%, rgba(4, 18, 26, 0.95) 100%);
+            border: 1px solid rgba(6, 182, 212, 0.35);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .web-card-cyan:hover {
+            border-color: rgba(6, 182, 212, 0.75);
+            box-shadow: 0 16px 35px -10px rgba(6, 182, 212, 0.5);
+        }
+
+        .web-card-purple {
+            background: linear-gradient(135deg, rgba(30, 18, 54, 0.85) 0%, rgba(14, 8, 28, 0.95) 100%);
+            border: 1px solid rgba(167, 139, 250, 0.35);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes float-brand {
+            0%, 100% { transform: translateY(0px); box-shadow: 0 10px 25px -5px rgba(10, 76, 134, 0.6); }
+            50% { transform: translateY(-7px); box-shadow: 0 18px 30px -5px rgba(10, 76, 134, 0.8); }
+        }
+        @keyframes float-wa {
+            0%, 100% { transform: translateY(0px) scale(1); box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.5); }
+            50% { transform: translateY(-7px) scale(1.03); box-shadow: 0 18px 30px -5px rgba(37, 211, 102, 0.8); }
+        }
+
+        .anim-float-brand { animation: float-brand 4s ease-in-out infinite; }
+        .anim-float-wa { animation: float-wa 4s ease-in-out infinite 0.5s; }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.2s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: #06B6D4;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        @media print {
+            body { background-color: #fff !important; color: #111 !important; }
+            #interactive-bg-canvas, aside, header, #floating-kaaf-btn, #floating-wa-btn { display: none !important; }
+            .web-card-blue, .web-card-gold, .web-card-green, .web-card-purple, .web-card-cyan {
+                background: #f8fafc !important;
+                border: 1px solid #cbd5e1 !important;
+                color: #0f172a !important;
+                box-shadow: none !important;
+            }
+            .text-white { color: #0f172a !important; }
+            .text-gray-200, .text-gray-300, .text-gray-400 { color: #334155 !important; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-kaaf-cyan selection:text-slate-950">
+
+    <!-- Interactive Ambient Canvas Layer -->
+    <canvas id="interactive-bg-canvas"></canvas>
+
+    <!-- Floating Brand Logo (Bottom Left) -->
+    <aside id="floating-kaaf-btn" class="fixed bottom-6 left-6 z-50">
+        <a href="https://kaafmarketing.sa/" target="_blank" rel="noopener noreferrer" title="مجموعة كاف | KAAF Group" class="block w-14 h-14 rounded-full overflow-hidden border-2 border-kaaf-cyanLight/80 p-0.5 bg-black/90 anim-float-brand transition-all hover:scale-110 group backdrop-blur-md">
+            <img src="https://i.ibb.co/qLQcG9vr/Whats-App-Image-2026-08-26-at-11-29-58.jpg" alt="KAAF Group Logo" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/100x100/0A4C86/ffffff?text=KAAF'">
+        </a>
+    </aside>
+
+    <!-- Floating WhatsApp CTA (Bottom Right) -->
+    <aside id="floating-wa-btn" class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/966537553910" target="_blank" rel="noopener noreferrer" title="التواصل المباشر مع مستشار تطوير الأعمال (+966 53 755 3910)" class="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center border-2 border-emerald-200/80 anim-float-wa transition-all hover:scale-110 shadow-lg">
+            <i class="fa-brands fa-whatsapp text-3xl"></i>
+        </a>
+    </aside>
+
+    <!-- Document Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-kaaf-dark/90 backdrop-blur-xl border-b border-kaaf-border/70 px-4 lg:px-12 py-3.5 transition-all">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Brand Logo & Proposal Identity (Right in RTL) -->
+            <div class="flex items-center gap-3.5">
+                <div class="w-11 h-11 rounded-2xl overflow-hidden border border-kaaf-blueLight/50 p-0.5 bg-black shrink-0 shadow-glow-blue">
+                    <img src="https://i.ibb.co/qLQcG9vr/Whats-App-Image-2026-08-26-at-11-29-58.jpg" alt="KAAF Group Logo" class="w-full h-full object-cover rounded-xl" onerror="this.src='https://placehold.co/100x100/0A4C86/ffffff?text=KAAF'">
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-base font-black text-white tracking-wide font-ibm">KAAF Group</span>
+                        <span class="px-2 py-0.5 rounded-full bg-kaaf-cyan/20 text-kaaf-cyanLight text-[10px] font-extrabold border border-kaaf-cyan/40">العرض الفني: إعمار لاند</span>
+                    </div>
+                    <p class="text-[11px] text-gray-400 font-medium">فريق مبيعات خارجي متخصص • الحلول الأمنية والتقنية والهندسية</p>
+                </div>
+            </div>
+
+            <!-- Anchor Links -->
+            <nav class="hidden lg:flex items-center gap-4 text-xs font-bold text-gray-300">
+                <a href="#understanding" class="nav-link hover:text-white">فهم إعمار لاند</a>
+                <a href="#sectors" class="nav-link hover:text-white text-kaaf-cyanLight"><i class="fa-solid fa-building-shield text-xs ml-1"></i> القطاعات المستهدفة</a>
+                <a href="#workflow" class="nav-link hover:text-white">رحلة الوصول</a>
+                <a href="#tracks" class="nav-link hover:text-white">اتجاهات البيع الـ 5</a>
+                <a href="#differentiators" class="nav-link hover:text-white text-kaaf-goldLight">لماذا فريق KAAF؟</a>
+                <a href="#tools-kpis" class="nav-link hover:text-white">الأدوات والمؤشرات</a>
+                <a href="#timeline" class="nav-link hover:text-white">خطة الـ 3 أشهر</a>
+                <a href="#value" class="nav-link hover:text-white">القيمة المضافة</a>
+            </nav>
+
+            <!-- WhatsApp Action Button (Left in RTL) -->
+            <div class="flex items-center gap-2 order-last">
+                <a href="https://wa.me/966537553910" target="_blank" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>تواصل معنا</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Document Content Container -->
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-20">
+
+        <!-- ========================================================================= -->
+        <!-- 00 — PROPOSAL HERO BANNER / COVER                                         -->
+        <!-- ========================================================================= -->
+        <section class="relative rounded-[32px] overflow-hidden p-8 sm:p-14 lg:p-16 bg-gradient-to-br from-kaaf-blueDeep/95 via-kaaf-darkSlate/95 to-kaaf-dark/95 border border-kaaf-cyan/40 shadow-web-card text-white backdrop-blur-lg">
+            <div class="kaaf-ribbon absolute top-0 left-0 right-0"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-kaaf-cyan/20 border border-kaaf-cyan/40 text-kaaf-cyanLight text-xs font-bold font-ibm">
+                        <i class="fa-solid fa-file-shield text-kaaf-cyan"></i>
+                        <span>وثيقة العرض الفني المتكامل • Technical Proposal</span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <span class="text-xs sm:text-sm font-bold text-gray-400 block tracking-wider uppercase font-ibm">Specialized Security & Engineering B2B Sales Engine</span>
+                        <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight">
+                            العرض الفني لتشغيل فريق مبيعات خارجي متخصص <br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-l from-kaaf-cyan via-kaaf-cyanLight to-kaaf-goldLight font-ibm">
+                                الموجه إلى: شركة إعمار لاند – Emaar Land
+                            </span>
+                        </h1>
+                        <p class="text-sm sm:text-base font-bold text-sky-100/90 font-cairo leading-relaxed max-w-3xl border-r-4 border-kaaf-cyan pr-4 py-1 bg-kaaf-blueDeep/40 rounded-l-2xl">
+                            بناء قناة مبيعات مؤسسية منظمة تساعد إعمار لاند على الوصول إلى الجهات والمؤسسات والمشاريع التي تحتاج إلى حلولها الأمنية والتقنية والهندسية، وتوسيع قاعدة عملائها المحتملين، وفتح فرص تجارية مستدامة.
+                        </p>
+                    </div>
+
+                    <!-- Meta Tags (Purely Technical - Zero Financial Figures) -->
+                    <div class="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                        <div class="p-3 rounded-2xl bg-black/60 border border-white/10">
+                            <span class="text-gray-400 block text-[11px]">مقدم العرض</span>
+                            <span class="font-black text-white font-ibm">KAAF Group</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-black/60 border border-kaaf-cyan/40">
+                            <span class="text-gray-400 block text-[11px]">الجهة المستهدفة</span>
+                            <span class="font-black text-kaaf-cyanLight font-ibm">إعمار لاند – Emaar Land</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-black/60 border border-white/10">
+                            <span class="text-gray-400 block text-[11px]">المدة التشغيلية</span>
+                            <span class="font-black text-kaaf-goldLight">3 أشهر متكاملة</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-black/60 border border-white/10">
+                            <span class="text-gray-400 block text-[11px]">الموقع المرجعي</span>
+                            <a href="https://emaar.sa/" target="_blank" class="font-black text-emerald-400 underline font-ibm">emaar.sa</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dual Brand Logos Showcase Box -->
+                <div class="lg:col-span-4 flex justify-center">
+                    <div class="w-full space-y-4 p-6 rounded-3xl bg-kaaf-cardBg/90 border border-kaaf-cyan/40 shadow-2xl backdrop-blur-md">
+                        <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                            <span class="text-xs font-black text-white flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved text-kaaf-cyan"></i>
+                                <span>شراكة التطوير الهندسي والتجاري</span>
+                            </span>
+                            <span class="text-[10px] text-kaaf-cyan font-mono font-bold">TECHNICAL</span>
+                        </div>
+
+                        <!-- Brand Logos Container -->
+                        <div class="p-4 rounded-2xl bg-black/70 border border-white/10 flex items-center justify-around gap-3">
+                            <div class="text-center space-y-1">
+                                <div class="w-14 h-14 rounded-2xl overflow-hidden border border-kaaf-blueLight/50 p-0.5 bg-black mx-auto shadow-md">
+                                    <img src="https://i.ibb.co/qLQcG9vr/Whats-App-Image-2026-08-26-at-11-29-58.jpg" alt="KAAF Group" class="w-full h-full object-cover rounded-xl" onerror="this.src='https://placehold.co/100x100/0A4C86/ffffff?text=KAAF'">
+                                </div>
+                                <span class="text-[10px] font-bold text-gray-400 block font-ibm">KAAF Group</span>
+                            </div>
+                            <div class="text-kaaf-cyan text-lg font-mono font-bold">✕</div>
+                            <div class="text-center space-y-1">
+                                <div class="w-16 h-14 rounded-2xl overflow-hidden border border-kaaf-cyan/50 p-1 bg-white mx-auto shadow-md flex items-center justify-center">
+                                    <img src="https://i.ibb.co/4wWFdRY8/logo.png" onerror="this.onerror=null; this.src='https://i.ibb.co/5XXtvBGH/logo.png'; this.onerror=function(){this.src='https://i.ibb.co/zWNWbmFF/logo.png'; this.onerror=function(){this.src='https://i.ibb.co/WpHVqr88/logo.png'; this.onerror=function(){this.parentElement.innerHTML='<div class=\'text-[10px] font-black text-slate-900 leading-tight\'>إعمار لاند<br>Emaar Land</div>'}}};" alt="شعار إعمار لاند – Emaar Land" class="w-full h-full object-contain">
+                                </div>
+                                <span class="text-[10px] font-bold text-kaaf-cyanLight block font-ibm">Emaar Land</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 text-xs text-gray-300">
+                            <div class="p-2.5 rounded-xl bg-kaaf-blue/20 border border-kaaf-blue/30 space-y-0.5">
+                                <span class="font-bold text-white flex items-center gap-1.5">
+                                    <i class="fa-solid fa-network-wired text-kaaf-cyanLight"></i>
+                                    بيع الحل المتكامل لا المنتج المنفرد
+                                </span>
+                                <p class="text-[11px] text-gray-300">CCTV • Access Control • BMS • Smart Home • الشبكات • الحريق.</p>
+                            </div>
+                            <div class="p-2.5 rounded-xl bg-kaaf-gold/15 border border-kaaf-gold/30 space-y-0.5">
+                                <span class="font-bold text-kaaf-goldLight flex items-center gap-1.5">
+                                    <i class="fa-solid fa-city text-kaaf-gold"></i>
+                                    تغطية 6 قطاعات حيوية بالمملكة
+                                </span>
+                                <p class="text-[11px] text-gray-300">الحكومي، العقاري والإنشائي، التعليمي، الطبي، الفندقي والتجاري، والشركات.</p>
+                            </div>
+                        </div>
+
+                        <a href="#sectors" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-kaaf-blue via-kaaf-cyan to-kaaf-green text-slate-950 font-black text-xs text-center block hover:brightness-110 transition shadow-md">
+                            استعراض خريطة القطاعات ومنهجية التنفيذ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 01 — UNDERSTANDING EMAAR LAND & COMMERCIAL OPPORTUNITIES                  -->
+        <!-- ========================================================================= -->
+        <section id="understanding" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-cyan/30 text-kaaf-cyanLight font-black text-xs border border-kaaf-cyan/50 flex items-center gap-1.5">
+                    <i class="fa-solid fa-building-shield text-[11px]"></i>
+                    <span>أولاً • فهم النشاط والفرص</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-compass text-kaaf-cyanLight text-xl"></i>
+                    <span>فهم نشاط إعمار لاند والفرص التجارية في السوق السعودي</span>
+                </h2>
+            </div>
+
+            <div class="web-card-cyan rounded-3xl p-6 sm:p-10 space-y-6 border-2 border-kaaf-cyan/40 shadow-web-card">
+                <div class="flex items-center gap-3 pb-3 border-b border-kaaf-cyan/30 text-kaaf-cyanLight font-bold text-sm">
+                    <div class="w-9 h-9 rounded-xl bg-kaaf-cyan/20 flex items-center justify-center text-kaaf-cyan">
+                        <i class="fa-solid fa-microchip text-base"></i>
+                    </div>
+                    <span>شركة هندسية سعودية رائدة في الحلول الأمنية والتقنية والذكية المتكاملة</span>
+                </div>
+
+                <p class="text-base sm:text-lg text-slate-200 leading-relaxed font-medium">
+                    بناءً على مراجعة المنصة الرسمية لشركة <strong>إعمار لاند – Emaar Land</strong> (<a href="https://emaar.sa/" target="_blank" class="text-kaaf-cyanLight underline font-ibm">emaar.sa</a>) وسجل مشاريعها المنجزة، يتضح أن إعمار لاند ليست مجرد مورد لأجهزة مراقبة منفردة، بل هي <strong>كيان هندسي سعودي متخصص يجمع بين التصميم والتخطيط الهندسي، وتوريد أحدث التقنيات الأمنية والذكية، والتنفيذ الميداني الاحترافي، وخدمات الصيانة والدعم الفني</strong>.
+                </p>
+
+                <!-- 7 Core Strengths Grid -->
+                <div class="space-y-3 pt-2">
+                    <h4 class="text-sm font-black text-white flex items-center gap-2">
+                        <i class="fa-solid fa-award text-kaaf-gold"></i>
+                        <span>نقاط القوة المؤسسية والهندسية لإعمار لاند التي سيرتكز عليها فريق المبيعات:</span>
+                    </h4>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs text-gray-300">
+                        <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                            <span class="font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-helmet-safety text-kaaf-cyan"></i> خبرة هندسية سعودية</span>
+                            <p class="text-[11px] text-gray-400">كوادر هندسية وفنية متخصصة في تأمين المباني والمنشآت والبنى التحتية داخل المملكة.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                            <span class="font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-diagram-project text-kaaf-cyan"></i> حلول متكاملة (Turnkey)</span>
+                            <p class="text-[11px] text-gray-400">تغطية دورة المشروع من التصميم والتخطيط، مروراً بالتوريد والتركيب، وحتى التشغيل.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                            <span class="font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-layer-group text-kaaf-cyan"></i> تنوع القطاعات المخدومة</span>
+                            <p class="text-[11px] text-gray-400">العمل بكفاءة مع الجهات الحكومية، الشركات الكبرى، المجمعات السكنية، والمستشفيات.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                            <span class="font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-trophy text-kaaf-cyan"></i> سجل مشاريع موثق</span>
+                            <p class="text-[11px] text-gray-400">إنجازات ملموسة في مشاريع حكومية وتعليمية وطبية وعقارية تعزز المصداقية الفورية.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                            <span class="font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-cubes text-kaaf-cyan"></i> تنوع الحلول والأنظمة</span>
+                            <p class="text-[11px] text-gray-400">CCTV، التحكم بالدخول، الشبكات، السنترال، الصوتيات، BMS، والمنازل الذكية.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5">
+                            <span class="font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-headset text-kaaf-cyan"></i> الدعم الفني وما بعد البيع</span>
+                            <p class="text-[11px] text-gray-400">التزام بالضمان والصيانة الدورية وسرعة الاستجابة الفنية لضمان استمرارية الأنظمة.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/30 space-y-1.5 sm:col-span-2">
+                            <span class="font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-sliders text-kaaf-cyan"></i> تفصيل الحلول حسب طبيعة كل مشروع</span>
+                            <p class="text-[11px] text-gray-400">القدرة الهندسية على دراسة متطلبات كل منشأة وتصميم النظام السلكي أو اللاسلكي الأنسب لبيئة تشغيلها.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Strategic Message -->
+                <div class="p-5 rounded-2xl bg-black/75 border-2 border-kaaf-cyan/60 text-kaaf-cyanLight font-bold text-xs sm:text-sm leading-relaxed shadow-lg flex items-center gap-3">
+                    <i class="fa-solid fa-quote-right text-kaaf-cyan text-2xl shrink-0"></i>
+                    <span>«إعمار لاند تمتلك حلولًا تقنية وأمنية متعددة وخبرة في تنفيذ المشاريع، ودور فريق KAAF هو إيصال هذه الخبرات إلى الجهات التي تحتاج إليها، وتحويل هذه الإمكانات إلى فرص تجارية واجتماعات ومشاريع محتملة».</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 02 — SCOPE OF SALES WORK & TARGET SECTORS MAP (6 SECTORS)                 -->
+        <!-- ========================================================================= -->
+        <section id="sectors" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-blue/30 text-kaaf-cyanLight font-black text-xs border border-kaaf-blue/50 flex items-center gap-1.5">
+                    <i class="fa-solid fa-sitemap text-[11px]"></i>
+                    <span>ثانياً • نطاق العمل والقطاعات</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-map-location-dot text-kaaf-cyanLight text-xl"></i>
+                    <span>نطاق عمل فريق المبيعات وخريطة القطاعات المستهدفة (6 قطاعات)</span>
+                </h2>
+            </div>
+
+            <!-- Part A: Study & Preparation -->
+            <div class="web-card-blue rounded-3xl p-6 sm:p-8 space-y-4 border-2 border-kaaf-blue/40">
+                <div class="flex items-center gap-2.5 text-kaaf-cyanLight font-bold text-sm pb-2 border-b border-white/10">
+                    <i class="fa-solid fa-graduation-cap text-base"></i>
+                    <h3 class="text-white font-black text-base">1. دراسة النشاط والخدمات وتأهيل فريق المبيعات</h3>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs text-gray-300">
+                    <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-start gap-2">
+                        <i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i>
+                        <span>دراسة شاملة لكافة الأنظمة والخدمات التي تقدمها إعمار لاند واستخداماتها الفنية.</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-start gap-2">
+                        <i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i>
+                        <span>تحديد المميزات الفنية والتشغيلية التي تهم كل قطاع وإعداد رسائل تعريفية مخصصة.</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-start gap-2">
+                        <i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i>
+                        <span>تدريب الفريق على الفرق الجوهري بين بيع منتج منفرد وتقديم حل هندسي متكامل لمشروع.</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-start gap-2">
+                        <i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i>
+                        <span>صياغة مصفوفة الأسئلة الاستكشافية لتشخيص احتياجات المنشآت قبل المعاينة الهندسية.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part B: Visual Map of the 6 Target Sectors -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-black text-white flex items-center gap-2">
+                    <i class="fa-solid fa-crosshairs text-kaaf-gold"></i>
+                    <span>2. خريطة توزيع جهود المبيعات على القطاعات المستهدفة:</span>
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Sector 1: Government Sector -->
+                    <div class="web-card-green p-6 rounded-3xl space-y-3 border-t-4 border-t-kaaf-greenLight flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                                <span class="text-xs font-mono font-bold text-kaaf-greenLight px-2.5 py-0.5 rounded-full bg-kaaf-green/30">القطاع 01</span>
+                                <i class="fa-solid fa-landmark text-kaaf-greenLight text-lg"></i>
+                            </div>
+                            <h4 class="text-base font-black text-white">القطاع الحكومي والبلديات</h4>
+                            <ul class="space-y-1 text-xs text-gray-300">
+                                <li>• الجهات والهيئات الحكومية والبلديات التابعة لها.</li>
+                                <li>• مشاريع البنية التحتية والتطوير الحضري.</li>
+                                <li>• المشاريع التي تتطلب مراقبة وتحكم وشبكات وحلول تقنية.</li>
+                            </ul>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-black/50 border border-emerald-500/30 text-[11px] text-emerald-200">
+                            <strong>ضابط تنظيمي:</strong> يتم التعامل وفق إجراءات التأهيل والتسجيل والمنافسات الرسمية المعمول بها دون تجاوز الصلاحيات.
+                        </div>
+                    </div>
+
+                    <!-- Sector 2: Real Estate & Construction -->
+                    <div class="web-card-gold p-6 rounded-3xl space-y-3 border-t-4 border-t-kaaf-gold flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                                <span class="text-xs font-mono font-bold text-kaaf-gold px-2.5 py-0.5 rounded-full bg-kaaf-amber/30">القطاع 02</span>
+                                <i class="fa-solid fa-city text-kaaf-gold text-lg"></i>
+                            </div>
+                            <h4 class="text-base font-black text-white">القطاع العقاري والإنشائي</h4>
+                            <ul class="space-y-1 text-xs text-gray-300">
+                                <li>• شركات التطوير العقاري وشركات المقاولات والإنشاءات.</li>
+                                <li>• مطورو ومشغلو المجمعات السكنية وإدارة المرافق.</li>
+                            </ul>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-black/50 border border-kaaf-gold/30 text-[11px] text-amber-100">
+                            <strong>الحلول المناسبة:</strong> CCTV، Access Control، Smart Home، BMS، الشبكات، أنظمة الحريق، والأنظمة الكهروميكانيكية.
+                        </div>
+                    </div>
+
+                    <!-- Sector 3: Educational Sector -->
+                    <div class="web-card-blue p-6 rounded-3xl space-y-3 border-t-4 border-t-kaaf-cyanLight flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                                <span class="text-xs font-mono font-bold text-kaaf-cyanLight px-2.5 py-0.5 rounded-full bg-kaaf-blue/30">القطاع 03</span>
+                                <i class="fa-solid fa-graduation-cap text-kaaf-cyanLight text-lg"></i>
+                            </div>
+                            <h4 class="text-base font-black text-white">القطاع التعليمي والتدريبي</h4>
+                            <ul class="space-y-1 text-xs text-gray-300">
+                                <li>• الجامعات والكليات الأهلية والحكومية.</li>
+                                <li>• المدارس الأهلية والدولية والمجمعات التدريبية.</li>
+                            </ul>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-black/50 border border-kaaf-cyan/30 text-[11px] text-sky-200">
+                            <strong>الحلول المناسبة:</strong> كاميرات المراقبة، الشبكات والبنية التحتية، التحكم بالدخول، أنظمة الصوت ومخاطبة الجمهور، والسنترال.
+                        </div>
+                    </div>
+
+                    <!-- Sector 4: Medical & Healthcare -->
+                    <div class="web-card-cyan p-6 rounded-3xl space-y-3 border-t-4 border-t-kaaf-cyan flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                                <span class="text-xs font-mono font-bold text-kaaf-cyan px-2.5 py-0.5 rounded-full bg-kaaf-cyan/20">القطاع 04</span>
+                                <i class="fa-solid fa-hospital text-kaaf-cyan text-lg"></i>
+                            </div>
+                            <h4 class="text-base font-black text-white">القطاع الطبي والصحي</h4>
+                            <ul class="space-y-1 text-xs text-gray-300">
+                                <li>• المستشفيات والمجمعات الطبية المتكاملة.</li>
+                                <li>• المراكز والعيادات التخصصية والمختبرات.</li>
+                            </ul>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-black/50 border border-kaaf-cyan/30 text-[11px] text-cyan-200">
+                            <strong>الحلول المناسبة:</strong> المراقبة الأمنية، التحكم في الوصول، أنظمة النداء والصوتيات، الشبكات، الاتصالات، وأنظمة الحريق والسلامة.
+                        </div>
+                    </div>
+
+                    <!-- Sector 5: Hospitality, Commercial & Industrial -->
+                    <div class="web-card-purple p-6 rounded-3xl space-y-3 border-t-4 border-t-kaaf-purpleLight flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                                <span class="text-xs font-mono font-bold text-kaaf-purpleLight px-2.5 py-0.5 rounded-full bg-kaaf-purple/30">القطاع 05</span>
+                                <i class="fa-solid fa-hotel text-kaaf-purpleLight text-lg"></i>
+                            </div>
+                            <h4 class="text-base font-black text-white">القطاع الفندقي والتجاري والصناعي</h4>
+                            <ul class="space-y-1 text-xs text-gray-300">
+                                <li>• الفنادق، الشقق الفندقية، المولات، والمجمعات الترفيهية.</li>
+                                <li>• المستودعات اللوجستية والمصانع والمنشآت الصناعية.</li>
+                            </ul>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-black/50 border border-kaaf-purple/30 text-[11px] text-purple-200">
+                            <strong>الحلول المناسبة:</strong> CCTV، Access Control، Smart Home، BMS، IPTV، الشبكات والسنترال، الصوتيات، والحريق.
+                        </div>
+                    </div>
+
+                    <!-- Sector 6: Corporate & Enterprises -->
+                    <div class="web-card-blue p-6 rounded-3xl space-y-3 border-t-4 border-t-kaaf-blueLight flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                                <span class="text-xs font-mono font-bold text-kaaf-cyanLight px-2.5 py-0.5 rounded-full bg-kaaf-blue/30">القطاع 06</span>
+                                <i class="fa-solid fa-briefcase text-kaaf-cyanLight text-lg"></i>
+                            </div>
+                            <h4 class="text-base font-black text-white">قطاع الشركات والمؤسسات</h4>
+                            <ul class="space-y-1 text-xs text-gray-300">
+                                <li>• الشركات المتوسطة والكبيرة والمقرات الإدارية.</li>
+                                <li>• المنشآت الراغبة في تحديث بنيتها أو إبرام عقود صيانة.</li>
+                            </ul>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-black/50 border border-kaaf-blue/30 text-[11px] text-sky-200">
+                            <strong>التركيز التجاري:</strong> تطوير الأنظمة القائمة، عقود الصيانة الدورية، والربط الشبكي والاتصالات بين الفروع.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-black/60 border border-white/10 text-xs text-gray-400 text-center">
+                    * ملاحظة تنظيمية: تمثل هذه القطاعات خريطة استهداف أولية شاملة، وتُحدد الأولويات النهائية بالتنسيق المشترك وفق الخدمات التي ترغب إدارة إعمار لاند في التركيز عليها وقدرتها التنفيذية.
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 03 — CUSTOMER ACQUISITION WORKFLOW (5 STAGES)                             -->
+        <!-- ========================================================================= -->
+        <section id="workflow" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-purple/30 text-kaaf-purpleLight font-black text-xs border border-kaaf-purple/50 flex items-center gap-1.5">
+                    <i class="fa-solid fa-route text-[11px]"></i>
+                    <span>ثالثاً • رحلة الوصول</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-bars-progress text-kaaf-purpleLight text-xl"></i>
+                    <span>كيف يعمل فريق KAAF على الوصول إلى العملاء؟ (5 مراحل عملية)</span>
+                </h2>
+            </div>
+
+            <div class="web-card-purple rounded-3xl p-6 sm:p-10 space-y-6 border-2 border-kaaf-purple/40 shadow-web-card">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 text-xs">
+                    <!-- Stage 1 -->
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-blue/40 space-y-2 flex flex-col justify-between">
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] font-mono font-bold text-kaaf-cyanLight px-2 py-0.5 rounded-full bg-kaaf-blue/30">المرحلة 01</span>
+                            <h4 class="text-sm font-black text-white">بناء قاعدة البيانات</h4>
+                            <p class="text-gray-300 leading-relaxed">حصر الجهات والمشاريع، تصنيفها حسب القطاع والحجم والأنظمة المناسبة، وجمع بيانات التواصل المهنية المشروعة.</p>
+                        </div>
+                        <div class="text-[10px] text-kaaf-cyanLight font-mono pt-2 border-t border-white/10">Prospect Database</div>
+                    </div>
+
+                    <!-- Stage 2 -->
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-cyan/40 space-y-2 flex flex-col justify-between">
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] font-mono font-bold text-kaaf-cyan px-2 py-0.5 rounded-full bg-kaaf-cyan/20">المرحلة 02</span>
+                            <h4 class="text-sm font-black text-white">الوصول لصناع القرار</h4>
+                            <p class="text-gray-300 leading-relaxed">استهداف المالك، المدير العام، مدير المشاريع، مدير المشتريات، مدير IT، مدير الأمن والسلامة، ومدير المرافق.</p>
+                        </div>
+                        <div class="text-[10px] text-kaaf-cyan font-mono pt-2 border-t border-white/10">Decision Makers</div>
+                    </div>
+
+                    <!-- Stage 3 -->
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-gold/40 space-y-2 flex flex-col justify-between">
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] font-mono font-bold text-kaaf-gold px-2 py-0.5 rounded-full bg-kaaf-amber/30">المرحلة 03</span>
+                            <h4 class="text-sm font-black text-white">التواصل والتعريف</h4>
+                            <p class="text-gray-300 leading-relaxed">تقديم إعمار لاند باحترافية، إبراز مشاريعها السابقة ذات الصلة، وشرح الحلول المرتبطة باحتياجات المنشأة.</p>
+                        </div>
+                        <div class="text-[10px] text-kaaf-gold font-mono pt-2 border-t border-white/10">Consultative Outreach</div>
+                    </div>
+
+                    <!-- Stage 4 -->
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-kaaf-purple/40 space-y-2 flex flex-col justify-between">
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] font-mono font-bold text-kaaf-purpleLight px-2 py-0.5 rounded-full bg-kaaf-purple/30">المرحلة 04</span>
+                            <h4 class="text-sm font-black text-white">التأهيل والاجتماعات</h4>
+                            <p class="text-gray-300 leading-relaxed">التحقق من الجدية، تنسيق الاجتماعات التعريفية أو المعاينات، وتسليم ملخص الاحتياج لفريق إعمار لاند الهندسي.</p>
+                        </div>
+                        <div class="text-[10px] text-kaaf-purpleLight font-mono pt-2 border-t border-white/10">Qualification & Meetings</div>
+                    </div>
+
+                    <!-- Stage 5 -->
+                    <div class="p-4 rounded-2xl bg-kaaf-darkSlate/95 border border-emerald-500/40 space-y-2 flex flex-col justify-between bg-emerald-950/20">
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] font-mono font-bold text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-900/40">المرحلة 05</span>
+                            <h4 class="text-sm font-black text-white">المتابعة التجارية</h4>
+                            <p class="text-gray-300 leading-relaxed">متابعة نتائج الاجتماعات، التنسيق لإرسال العروض الفنية والمالية المعتمدة، وملاحقة الردود حتى مرحله التفاوض.</p>
+                        </div>
+                        <div class="text-[10px] text-emerald-400 font-mono pt-2 border-t border-white/10">Follow-up & Closing</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 04 — FIVE PARALLEL SALES TRACKS                                           -->
+        <!-- ========================================================================= -->
+        <section id="tracks" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-gold/30 text-kaaf-goldLight font-black text-xs border border-kaaf-gold/50 flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrows-split-up-and-left text-[11px]"></i>
+                    <span>رابعاً • مسارات العمل</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-compass-drafting text-kaaf-gold text-xl"></i>
+                    <span>اتجاهات فريق المبيعات الخمسة (العمل المتوازي)</span>
+                </h2>
+            </div>
+
+            <p class="text-sm text-gray-300">
+                لا نعتمد في استهداف السوق على قناة واحدة؛ بل يتحرك فريق المبيعات عبر خمسة مسارات متوازية لتعظيم فرص إغلاق الصفقات قصيرة وطويلة الأجل:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-xs">
+                <!-- Track 1 -->
+                <div class="web-card-gold p-5 rounded-2xl space-y-2 border-t-2 border-t-kaaf-gold">
+                    <span class="text-xs font-mono font-bold text-kaaf-gold">الاتجاه 01</span>
+                    <h4 class="text-sm font-black text-white">مبيعات المشاريع (Project Sales)</h4>
+                    <p class="text-gray-300 leading-relaxed">التركيز على المشاريع الجديدة أو تحت الإنشاء (مجمعات سكنية، تجارية، تعليمية، طبية، بنية تحتية) التي تتطلب تأسيس أنظمة أمنية وتقنية متكاملة من الصفر.</p>
+                </div>
+
+                <!-- Track 2 -->
+                <div class="web-card-blue p-5 rounded-2xl space-y-2 border-t-2 border-t-kaaf-cyanLight">
+                    <span class="text-xs font-mono font-bold text-kaaf-cyanLight">الاتجاه 02</span>
+                    <h4 class="text-sm font-black text-white">مبيعات الشركات والمؤسسات (B2B Sales)</h4>
+                    <p class="text-gray-300 leading-relaxed">استهداف المقرات الإدارية والشركات والمستودعات والمصانع التي تحتاج إلى توريد وتركيب أنظمة مراقبة أو شبكات أو سنترال أو تحكم بالدخول.</p>
+                </div>
+
+                <!-- Track 3 -->
+                <div class="web-card-purple p-5 rounded-2xl space-y-2 border-t-2 border-t-kaaf-purpleLight">
+                    <span class="text-xs font-mono font-bold text-kaaf-purpleLight">الاتجاه 03</span>
+                    <h4 class="text-sm font-black text-white">الحسابات الاستراتيجية (Key Accounts)</h4>
+                    <p class="text-gray-300 leading-relaxed">استهداف المجموعات التجارية وشركات التطوير وإدارة المرافق التي تمتلك محفظة من المواقع والفروع لبناء علاقات توريد وتنفيذ مستدامة.</p>
+                </div>
+
+                <!-- Track 4 -->
+                <div class="web-card-cyan p-5 rounded-2xl space-y-2 border-t-2 border-t-kaaf-cyan">
+                    <span class="text-xs font-mono font-bold text-kaaf-cyan">الاتجاه 04</span>
+                    <h4 class="text-sm font-black text-white">فرص التحديث والتطوير (Upgrade Opportunities)</h4>
+                    <p class="text-gray-300 leading-relaxed">الوصول للمنشآت التي تمتلك أنظمة قديمة وتحتاج إلى تحديثها أو توسعتها أو ربطها بأنظمة سحابية وذكية حديثة وفق احتياجاتها الفنية.</p>
+                </div>
+
+                <!-- Track 5 -->
+                <div class="web-card-green p-5 rounded-2xl space-y-2 border-t-2 border-t-kaaf-greenLight md:col-span-2 lg:col-span-2">
+                    <span class="text-xs font-mono font-bold text-kaaf-greenLight">الاتجاه 05</span>
+                    <h4 class="text-sm font-black text-white">عقود الصيانة والدعم الفني (Maintenance Contracts)</h4>
+                    <p class="text-gray-300 leading-relaxed">اكتشاف الجهات التي تحتاج إلى عقود صيانة دورية وقائية ودعم فني موثوق لأنظمتها الأمنية والشبكية القائمة، والتنسيق مع إدارة إعمار لاند لتقديم العروض المناسبة.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 05 — WHY KAAF SALES TEAM IS DIFFERENT (8 COMPETITIVE ADVANTAGES)          -->
+        <!-- ========================================================================= -->
+        <section id="differentiators" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-gold/30 text-kaaf-goldLight font-black text-xs border border-kaaf-gold/50 flex items-center gap-1.5">
+                    <i class="fa-solid fa-star text-[11px]"></i>
+                    <span>خامساً • التميز البيعي</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-trophy text-kaaf-gold text-xl"></i>
+                    <span>لماذا فريق مبيعات KAAF مختلف عن أي فريق مبيعات تقليدي؟</span>
+                </h2>
+            </div>
+
+            <div class="relative overflow-hidden rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-kaaf-blueDeep via-kaaf-darkSlate to-kaaf-cardBg border-2 border-kaaf-gold shadow-glow-gold space-y-8">
+                <div class="kaaf-ribbon absolute top-0 left-0 right-0"></div>
+
+                <!-- Highlighted Key Slogan -->
+                <div class="p-5 rounded-2xl bg-black/80 border-2 border-kaaf-gold/60 text-kaaf-goldLight font-bold text-sm sm:text-base leading-relaxed shadow-lg flex items-center gap-3 max-w-4xl mx-auto">
+                    <i class="fa-solid fa-quote-right text-kaaf-gold text-2xl shrink-0"></i>
+                    <span>«نحن لا نبحث عن مجرد عميل مهتم، بل نعمل على اكتشاف الفرصة المناسبة، والوصول إلى صاحب القرار، وتهيئة الطريق أمام فريقكم الفني والتجاري لإتمام المشروع.»</span>
+                </div>
+
+                <!-- 8 Differentiators Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                    <div class="p-4 rounded-2xl bg-black/50 border border-kaaf-gold/30 space-y-1.5">
+                        <span class="font-bold text-kaaf-goldLight block">1. نبيع الحل المناسب، لا المنتج</span>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">فهم مشكلة واحتياج المنشأة وربطها بمنظومة حلول إعمار لاند الهندسية المتكاملة.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/50 border border-kaaf-gold/30 space-y-1.5">
+                        <span class="font-bold text-kaaf-goldLight block">2. نفهم طبيعة النشاط قبل التواصل</span>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">تخصيص الرسالة البيعية لكل قطاع لتكون ذات صلة مباشرة باهتمامات صانع القرار.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/50 border border-kaaf-gold/30 space-y-1.5">
+                        <span class="font-bold text-kaaf-goldLight block">3. استهداف مبني على البيانات</span>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">الاعتماد على الأدوات المهنية والمصادر القانونية المتاحة بدلاً من التخمين العشوائي.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/50 border border-kaaf-gold/30 space-y-1.5">
+                        <span class="font-bold text-kaaf-goldLight block">4. الوصول لصناع القرار الفعليين</span>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">التركيز على المدراء التنفيذيين، مدراء المشاريع، مدراء IT، والأمن والسلامة.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/50 border border-kaaf-gold/30 space-y-1.5">
+                        <span class="font-bold text-kaaf-goldLight block">5. فهم دورة بيع المشاريع</span>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">استيعاب أن بيع الأنظمة للمؤسسات يمر بمعاينة فنية، رفع متطلبات، عروض، ومراجعات.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/50 border border-kaaf-gold/30 space-y-1.5">
+                        <span class="font-bold text-kaaf-goldLight block">6. لا نتوقف عند أول تواصل</span>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">بروتوكول متابعة صارم ومستمر يلاحق الفرص المفتوحة حتى تتضح نتيجتها النهائية.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/50 border border-kaaf-gold/30 space-y-1.5">
+                        <span class="font-bold text-kaaf-goldLight block">7. CRM وتقارير قابلة للقياس</span>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">توثيق كل جهة وكل تواصل واجتماع لمنح إدارة إعمار لاند شفافية مطلقة.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/50 border border-kaaf-gold/30 space-y-1.5">
+                        <span class="font-bold text-kaaf-goldLight block">8. نعمل كامتداد تجاري للشركة</span>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">التحدث بهوية ورسائل إعمار لاند المعتمدة مع الحفاظ الصارم على سرية البيانات.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 06 — TOOLS, LEGAL COMPLIANCE & PERFORMANCE REPORTING (KPIS)               -->
+        <!-- ========================================================================= -->
+        <section id="tools-kpis" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-cyan/30 text-kaaf-cyanLight font-black text-xs border border-kaaf-cyan/50 flex items-center gap-1.5">
+                    <i class="fa-solid fa-server text-[11px]"></i>
+                    <span>سادساً وسابعاً • الأدوات والتقارير</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-chart-pie text-kaaf-cyanLight text-xl"></i>
+                    <span>أدوات العمل الاحترافية ومنظومة المتابعة والتقارير (KPIs)</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <!-- Tools & Legal Ethics -->
+                <div class="web-card-blue p-6 sm:p-8 rounded-3xl space-y-4 border-t-4 border-t-kaaf-cyan">
+                    <div class="flex items-center gap-2.5 text-kaaf-cyanLight font-bold text-sm pb-2 border-b border-white/10">
+                        <i class="fa-solid fa-screwdriver-wrench text-base"></i>
+                        <h3 class="text-white font-black text-base">أدوات العمل المهنية والالتزام القانوني</h3>
+                    </div>
+                    <ul class="space-y-2 text-xs text-gray-300 leading-relaxed">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i> <span>أدوات البحث المتقدم عن الشركات والمنشآت والمشاريع القائمة.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i> <span>المصادر التجارية والأدلة المهنية المتاحة بصورة مشروعة.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-brands fa-linkedin text-[#70B5F9] mt-0.5"></i> <span>منصة LinkedIn للوصول المباشر لأصحاب المناصب التنفيذية والهندسية.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i> <span>المواقع الرسمية للجهات المستهدفة لتحليل احتياجاتها التقنية.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i> <span>البريد الإلكتروني المهني والاتصالات التجارية المنضبطة.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i> <span>أنظمة CRM لتنظيم بيانات العملاء وتوثيق مراحل الفرص والتقارير.</span></li>
+                    </ul>
+                    <div class="p-3 rounded-xl bg-black/50 border border-white/10 text-[11px] text-gray-400">
+                        <strong>الالتزام الأخلاقي والنظامي:</strong> نلتزم باحترام الأنظمة والخصوصية وشروط استخدام المنصات بالمملكة، دون استخدام أي وسائل جمع بيانات أو تواصل غير مصرح بها.
+                    </div>
+                </div>
+
+                <!-- Periodic Reports & KPIs -->
+                <div class="web-card-green p-6 sm:p-8 rounded-3xl space-y-4 border-t-4 border-t-kaaf-greenLight">
+                    <div class="flex items-center gap-2.5 text-kaaf-greenLight font-bold text-sm pb-2 border-b border-white/10">
+                        <i class="fa-solid fa-chart-line text-base"></i>
+                        <h3 class="text-white font-black text-base">محتويات التقارير الدورية لإدارة إعمار لاند</h3>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-300">
+                        <div class="flex items-start gap-1.5"><i class="fa-solid fa-circle-dot text-kaaf-greenLight mt-0.5 text-[10px]"></i> <span>الجهات المضافة لقاعدة البيانات.</span></div>
+                        <div class="flex items-start gap-1.5"><i class="fa-solid fa-circle-dot text-kaaf-greenLight mt-0.5 text-[10px]"></i> <span>القطاعات التي يجري استهدافها.</span></div>
+                        <div class="flex items-start gap-1.5"><i class="fa-solid fa-circle-dot text-kaaf-greenLight mt-0.5 text-[10px]"></i> <span>عدد محاولات التواصل المنفذة.</span></div>
+                        <div class="flex items-start gap-1.5"><i class="fa-solid fa-circle-dot text-kaaf-greenLight mt-0.5 text-[10px]"></i> <span>الجهات التي تم الوصول إليها فعلياً.</span></div>
+                        <div class="flex items-start gap-1.5"><i class="fa-solid fa-circle-dot text-kaaf-greenLight mt-0.5 text-[10px]"></i> <span>العملاء المهتمون والمؤهلون (Leads).</span></div>
+                        <div class="flex items-start gap-1.5"><i class="fa-solid fa-circle-dot text-kaaf-greenLight mt-0.5 text-[10px]"></i> <span>الاجتماعات المرتبة والمنعقدة.</span></div>
+                        <div class="flex items-start gap-1.5"><i class="fa-solid fa-circle-dot text-kaaf-greenLight mt-0.5 text-[10px]"></i> <span>ملخص احتياج كل جهة ومشروع.</span></div>
+                        <div class="flex items-start gap-1.5"><i class="fa-solid fa-circle-dot text-kaaf-greenLight mt-0.5 text-[10px]"></i> <span>الفرص في مرحلة تقديم العرض الفني/المالي.</span></div>
+                        <div class="flex items-start gap-1.5"><i class="fa-solid fa-circle-dot text-kaaf-greenLight mt-0.5 text-[10px]"></i> <span>الفرص التي انتقلت لمرحلة التفاوض.</span></div>
+                        <div class="flex items-start gap-1.5"><i class="fa-solid fa-circle-dot text-kaaf-greenLight mt-0.5 text-[10px]"></i> <span>التحديات والتوصيات والخطوات التالية.</span></div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-black/50 border border-white/10 text-[11px] text-gray-400">
+                        <strong>التركيز على الجودة:</strong> هدفنا بناء منظومة مبيعات قابلة للقياس، وليس الاكتفاء بعرض أرقام اتصالات لا تعكس جدية الفرص.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 07 — 3-MONTH IMPLEMENTATION TIMELINE                                      -->
+        <!-- ========================================================================= -->
+        <section id="timeline" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-gold/30 text-kaaf-goldLight font-black text-xs border border-kaaf-gold/50 flex items-center gap-1.5">
+                    <i class="fa-solid fa-timeline text-[11px]"></i>
+                    <span>ثامناً • الخطة الزمنية</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-calendar-days text-kaaf-gold text-xl"></i>
+                    <span>توزيع العمل خلال فترة التعاقد (خطة الأشهر الثلاثة)</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Month 1 -->
+                <div class="web-card-blue p-6 sm:p-8 rounded-3xl space-y-4 border-t-4 border-t-kaaf-cyanLight">
+                    <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                        <span class="text-xs font-mono font-bold text-kaaf-cyanLight px-3 py-1 rounded-full bg-kaaf-blue/40 border border-kaaf-blue/60">الشهر الأول</span>
+                        <i class="fa-solid fa-rocket text-kaaf-cyanLight text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-black text-white">التأسيس والانطلاق</h3>
+                    <ul class="space-y-2 text-xs text-gray-300 leading-relaxed">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i> <span>دراسة شاملة لكافة خدمات وحلول إعمار لاند.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i> <span>إعداد الرسائل البيعية وسيناريوهات التواصل.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i> <span>تدريب الفريق على الأنظمة والحلول الهندسية.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i> <span>تحديد القطاعات ذات الأولوية وبناء القاعدة الأولية.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-cyanLight mt-0.5"></i> <span>بدء التواصل مع الجهات وتأهيل أول مجموعة فرص.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Month 2 -->
+                <div class="web-card-purple p-6 sm:p-8 rounded-3xl space-y-4 border-t-4 border-t-kaaf-purpleLight">
+                    <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                        <span class="text-xs font-mono font-bold text-kaaf-purpleLight px-3 py-1 rounded-full bg-kaaf-purple/40 border border-kaaf-purple/60">الشهر الثاني</span>
+                        <i class="fa-solid fa-arrows-up-down-left-right text-kaaf-purpleLight text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-black text-white">التوسع وبناء الفرص</h3>
+                    <ul class="space-y-2 text-xs text-gray-300 leading-relaxed">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-purpleLight mt-0.5"></i> <span>توسيع قاعدة العملاء المحتملين في مختلف المناطق.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-purpleLight mt-0.5"></i> <span>تفعيل العمل المتوازي على اتجاهات المبيعات الخمسة.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-purpleLight mt-0.5"></i> <span>تكثيف الوصول المباشر إلى صناع القرار في المشاريع.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-purpleLight mt-0.5"></i> <span>ترتيب الاجتماعات التعريفية ومتابعة مخرجاتها.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-purpleLight mt-0.5"></i> <span>تطوير الرسائل البيعية بناءً على تفاعل السوق.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Month 3 -->
+                <div class="web-card-gold p-6 sm:p-8 rounded-3xl space-y-4 border-t-4 border-t-kaaf-gold">
+                    <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                        <span class="text-xs font-mono font-bold text-kaaf-gold px-3 py-1 rounded-full bg-kaaf-amber/30 border border-kaaf-amber/50">الشهر الثالث</span>
+                        <i class="fa-solid fa-handshake-angle text-kaaf-gold text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-black text-white">تعميق المتابعة وتحويل الفرص</h3>
+                    <ul class="space-y-2 text-xs text-gray-300 leading-relaxed">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-gold mt-0.5"></i> <span>التركيز المكثف على الجهات والمشاريع الأكثر اهتماماً.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-gold mt-0.5"></i> <span>متابعة الاجتماعات والمعاينات الفنية والفرص التجارية.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-gold mt-0.5"></i> <span>التنسيق لتقديم العروض الفنية والمالية المعتمدة.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-gold mt-0.5"></i> <span>متابعة مراحل التفاوض وتقييم نتائج الاستهداف.</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-kaaf-gold mt-0.5"></i> <span>إعداد تقرير ختامي شامل بالفرص والتوصيات المستقبلية.</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 08 — ADDED VALUE FOR EMAAR LAND                                           -->
+        <!-- ========================================================================= -->
+        <section id="value" class="space-y-6">
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-kaaf-green/30 text-kaaf-greenLight font-black text-xs border border-kaaf-green/50 flex items-center gap-1.5">
+                    <i class="fa-solid fa-gem text-[11px]"></i>
+                    <span>تاسعاً • القيمة المستفادة</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center gap-2.5">
+                    <i class="fa-solid fa-award text-kaaf-greenLight text-xl"></i>
+                    <span>القيمة العملية التي تحصل عليها إعمار لاند من هذا التعاون</span>
+                </h2>
+            </div>
+
+            <div class="web-card-green rounded-3xl p-6 sm:p-10 space-y-6 border-2 border-kaaf-green/40 shadow-web-card">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                    <div class="p-4 rounded-2xl bg-black/40 border border-emerald-500/30 space-y-1.5">
+                        <i class="fa-solid fa-city text-emerald-400 text-base"></i>
+                        <h4 class="font-bold text-white">الوصول لقطاعات جديدة</h4>
+                        <p class="text-[11px] text-gray-300">اختراق أسواق ومشاريع خارج نطاق شبكة المعارف التقليدية.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/40 border border-emerald-500/30 space-y-1.5">
+                        <i class="fa-solid fa-network-wired text-emerald-400 text-base"></i>
+                        <h4 class="font-bold text-white">قنوات تواصل مؤسسية</h4>
+                        <p class="text-[11px] text-gray-300">فتح حوارات مهنية مستمرة مع الشركات والمطورين والمصانع.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/40 border border-emerald-500/30 space-y-1.5">
+                        <i class="fa-solid fa-cubes text-emerald-400 text-base"></i>
+                        <h4 class="font-bold text-white">استثمار تنوع الخدمات</h4>
+                        <p class="text-[11px] text-gray-300">خلق فرص بيع متقاطعة (Cross-Selling) عبر منظومة الحلول التقنية والأمنية.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/40 border border-emerald-500/30 space-y-1.5">
+                        <i class="fa-solid fa-hand-holding-heart text-emerald-400 text-base"></i>
+                        <h4 class="font-bold text-white">تخفيف العبء عن الإدارة</h4>
+                        <p class="text-[11px] text-gray-300">نقل مهام التنقيب والاتصال والمتابعة اليومية عن كاهل قيادة الشركة.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/40 border border-emerald-500/30 space-y-1.5">
+                        <i class="fa-solid fa-helmet-safety text-emerald-400 text-base"></i>
+                        <h4 class="font-bold text-white">تفرغ الفريق الهندسي</h4>
+                        <p class="text-[11px] text-gray-300">توجيه وقت المهندسين للمعاينات الفنية وتصميم الحلول وتنفيذ المشاريع.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/40 border border-emerald-500/30 space-y-1.5">
+                        <i class="fa-solid fa-bars-progress text-emerald-400 text-base"></i>
+                        <h4 class="font-bold text-white">تنظيم وتوثيق دورة البيع</h4>
+                        <p class="text-[11px] text-gray-300">إحكام السيطرة على الفرص المفتوحة عبر CRM ومنع فقدان أي عميل.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/40 border border-emerald-500/30 space-y-1.5">
+                        <i class="fa-solid fa-database text-emerald-400 text-base"></i>
+                        <h4 class="font-bold text-white">بناء قاعدة بيانات دائمة</h4>
+                        <p class="text-[11px] text-gray-300">تأسيس أصل تجاري مصنف ومحدث يخدم توسع المؤسسة مستقبلاً.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-black/40 border border-emerald-500/30 space-y-1.5">
+                        <i class="fa-solid fa-shield-check text-emerald-400 text-base"></i>
+                        <h4 class="font-bold text-white">توظيف سجل الإنجازات</h4>
+                        <p class="text-[11px] text-gray-300">تحويل مشاريع إعمار لاند السابقة إلى أدوات إقناع تبني الثقة فوراً.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 09 — CONCLUSION & CALL TO ACTION (PURELY TECHNICAL)                       -->
+        <!-- ========================================================================= -->
+        <section id="conclusion" class="relative rounded-[32px] overflow-hidden p-8 sm:p-14 bg-gradient-to-br from-kaaf-blueDeep via-kaaf-darkSlate to-kaaf-dark border border-kaaf-cyan/40 text-center space-y-8 shadow-web-card">
+            <div class="kaaf-ribbon absolute top-0 left-0 right-0"></div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-kaaf-cyan shadow-glow-cyan mx-auto p-0.5 bg-black">
+                    <img src="https://i.ibb.co/qLQcG9vr/Whats-App-Image-2026-08-26-at-11-29-58.jpg" alt="KAAF Group Logo" class="w-full h-full object-cover rounded-xl" onerror="this.src='https://placehold.co/100x100/0A4C86/ffffff?text=KAAF'">
+                </div>
+
+                <span class="text-xs font-bold text-kaaf-cyanLight font-mono uppercase tracking-widest block">KAAF Group × Emaar Land • Technical Proposal</span>
+
+                <h3 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+                    خاتمة العرض الفني والدعوة إلى الشراكة
+                </h3>
+
+                <p class="text-sm sm:text-base text-gray-200 leading-relaxed font-medium">
+                    «تمتلك <strong>إعمار لاند – Emaar Land</strong> الخبرة الهندسية والحلول الأمنية والتقنية المتكاملة التي تحتاجها قطاعات متعددة في المملكة العربية السعودية، ودورنا في <strong>KAAF Group</strong> هو أن نصل بهذه الإمكانات إلى الجهات وصناع القرار المناسبين، ونحوّلها إلى فرص تجارية منظمة واجتماعات نوعية يمكن متابعتها وتطويرها».
+                </p>
+
+                <p class="text-xs sm:text-sm text-kaaf-cyanLight font-bold">
+                    نستهدف من هذا التعاون بناء قناة مبيعات احترافية ومستدامة تجعل وصول إعمار لاند إلى المشاريع والعملاء المحتملين أكثر تنظيماً وفاعلية.
+                </p>
+
+                <div class="pt-2 text-lg sm:text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-kaaf-cyan via-kaaf-cyanLight to-kaaf-goldLight font-ibm">
+                    KAAF Group – شريككم في بناء قنوات النمو التجاري والوصول للمشاريع.
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/966537553910" target="_blank" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-kaaf-blue via-kaaf-cyan to-kaaf-green text-slate-950 font-black text-xs shadow-xl flex items-center gap-2 hover:brightness-110 transition">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>مناقشة التفاصيل الفنية واعتماد خطة التشغيل</span>
+                </a>
+                <a href="https://kaafmarketing.sa/" target="_blank" class="px-6 py-3.5 rounded-2xl bg-kaaf-dark border border-kaaf-border text-white font-bold text-xs hover:border-kaaf-cyan transition flex items-center gap-2">
+                    <i class="fa-solid fa-globe text-kaaf-cyanLight"></i>
+                    <span>الموقع الرسمي: kaafmarketing.sa</span>
+                </a>
+            </div>
+
+            <!-- Formal Signatures Box (Technical Endorsement) -->
+            <div class="pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-6 text-right text-xs text-gray-400">
+                <div class="space-y-1">
+                    <span class="text-white font-bold block text-sm">مقدم العرض الفني:</span>
+                    <p class="text-gray-300 font-bold">KAAF Group for Marketing, Software & Media Solutions</p>
+                    <p>مجموعة كاف لحلول التسويق والبرمجيات والحلول الإعلامية</p>
+                    <p class="font-mono text-gray-500">المملكة العربية السعودية • الرياض</p>
+                </div>
+                <div class="space-y-1 md:text-left">
+                    <span class="text-white font-bold block text-sm">الموجه إليه العرض:</span>
+                    <p class="text-gray-300 font-bold">شركة إعمار لاند – Emaar Land</p>
+                    <p>الاسم والصفة: ................................................................</p>
+                    <p>التوقيع والاعتماد الفني: ................................................</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive Ambient Canvas Script -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('interactive-bg-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let particles = [];
+            const particleCount = 40;
+            const colors = ['#0A4C86', '#06B6D4', '#00875A', '#7C3AED', '#D4AF37'];
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+
+            window.addEventListener('resize', resize);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.7;
+                    this.vy = (Math.random() - 0.5) * 0.7;
+                    this.radius = Math.random() * 2 + 1;
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                    this.alpha = Math.random() * 0.35 + 0.2;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = this.alpha;
+                    ctx.fill();
+                }
+            }
+
+            function init() {
+                resize();
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function connect() {
+                const maxDist = 130;
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a + 1; b < particles.length; b++) {
+                        let dx = particles[a].x - particles[b].x;
+                        let dy = particles[a].y - particles[b].y;
+                        let dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < maxDist) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.strokeStyle = '#06B6D4';
+                            ctx.globalAlpha = (1 - (dist / maxDist)) * 0.2;
+                            ctx.lineWidth = 1;
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.globalAlpha = 1;
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
+                connect();
+                requestAnimationFrame(animate);
+            }
+
+            window.onload = function() {
+                init();
+                animate();
+            };
+        })();
+    </script>
+</body>
+</html>
